@@ -14,15 +14,14 @@ import java.util.Optional;
 //  /api/post/id -> 게시글 생성 : (  /id = /api/post/id  )
 
 @RestController
-@RequestMapping("/api/post")
+@RequestMapping("/api/posts")
 public class PostController {
 
     @Autowired
     private PostService postService;
-//     PostController에서 받아온 데이터를 처리해 주는 로직인
 //     PostService를 주입해 줌.
 
-
+    // Paging処理
     @GetMapping()
     public ResponseEntity<Page<Post>> listPost(@RequestParam(defaultValue = "0") int page,
                                                @RequestParam(defaultValue = "10") int size)
@@ -63,6 +62,7 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id){
+        // 포스팅 삭제 로직  응답 로직
         boolean deleted = postService.deletePost(id);
         if(deleted){
             return ResponseEntity.ok().build();

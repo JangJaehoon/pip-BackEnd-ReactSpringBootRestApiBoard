@@ -8,16 +8,20 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = true)
     private String title;
-
     @Column(nullable = true)
     private String content;
+
+    // ログイン機能
+    @Column(nullable = true)
+    private String username;
+    @Column(nullable = true)
+    private String password;
+    // ログイン機能
 
 //    @Column(nullable = false)
 //    private String empID;
@@ -26,12 +30,15 @@ public class Post {
 //    private String info;
 
     public Post() {}
-
-    public Post(String title, String content) {
+    public Post(String title, String content, String username, String password) {
         this.title = title;
         this.content = content;
 
+        this.username = username;
+        this.password = password;
     }
+
+
 
 //    public Post(String title, String content, String empID, String info) {
 //        this.title = title;
@@ -39,6 +46,5 @@ public class Post {
 //        this.empID = empID;
 //        this.info = info;
 //    }
-
 
 }
