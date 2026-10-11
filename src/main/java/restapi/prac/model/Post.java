@@ -8,14 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = true)
     private String title;
-
     @Column(nullable = true)
     private String content;
 
@@ -26,11 +23,9 @@ public class Post {
 //    private String info;
 
     public Post() {}
-
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
-
     }
 
 //    public Post(String title, String content, String empID, String info) {
@@ -39,6 +34,5 @@ public class Post {
 //        this.empID = empID;
 //        this.info = info;
 //    }
-
 
 }

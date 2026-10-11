@@ -12,9 +12,7 @@ import java.util.Optional;
 // PostController에서 받아온 데이터를 처리해 주는 로직
 @Service
 public class PostService {
-
     private final PostRepository postRepository;
-
     // 초기화를 위한 생성자 매개변수
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
@@ -46,15 +44,11 @@ public class PostService {
     }
 
     public boolean deletePost(Long id){
-
        return postRepository.findById(id).map(
-
                // 찾아야할 게시글
             post -> {
                 postRepository.delete(post);
                 return true;
             }).orElse(false);
-
-
     }
 }
