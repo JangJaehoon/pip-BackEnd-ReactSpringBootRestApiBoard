@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import restapi.prac.model.Post;
@@ -19,19 +20,52 @@ public class PostController {
 
     @Autowired
     private PostService postService;
-//     PostService를 주입해 줌.
+    //     PostService를 주입해 줌.
+
+    // 検索関連処理
+    @GetMapping
+    public ResponseEntity<Page<Post>> listPost(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size){
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Post> posts;
+
+        if(keyword == null || keyword.trim().isEmpty() ){
+            posts = postService.getPosts(pageable);
+        }else{
+            posts = postService.searchPosts(
+                    keyword,
+                    pageable
+            );
+        }
+
+        return ResponseEntity.ok(posts);
+    }
 
     // Paging処理
-    @GetMapping()
-    public ResponseEntity<Page<Post>> listPost(@RequestParam(defaultValue = "0") int page,
-                                               @RequestParam(defaultValue = "10") int size)
-    {                                           // 1pageに10個
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Post> posts = postService.getPosts(pageable);
+//    @GetMapping()
+//    public ResponseEntity<Page<Post>> listPost(@RequestParam(defaultValue = "0") int page,
+//                                               @RequestParam(defaultValue = "10") int size)
+//    {                                           // 1pageに10個
+//        Pageable pageable = PageRequest.of(page, size);
+//        Page<Post> posts = postService.getPosts(pageable);
+//
+//        return ResponseEntity.ok().body(posts);
+//        // 게시글을 표시해 줌.
+//    }
 
-        return ResponseEntity.ok().body(posts);
-        // 게시글을 표시해 줌.
-    }
+//    @GetMapping
+//    public ResponseEntity<Page<Post>> getPosts(
+//        @RequestParam(value = "keyword", required = false) String keyword,
+//        @PageableDefault(size = 10)  Pageable pageable){
+//
+//        Page<Post> posts = postService.getPostList(keyword, pageable);
+//        return ResponseEntity.ok(posts);
+//    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPost(@PathVariable Long id){

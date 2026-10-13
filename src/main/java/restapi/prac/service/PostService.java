@@ -15,14 +15,34 @@ public class PostService {
     public final PostRepository postRepository;
     // 초기화를 위한 생성자 매개변수
     public PostService(PostRepository postRepository) {
-
         this.postRepository = postRepository;
     }
-
 
     public Page<Post> getPosts(Pageable pageable){
         return postRepository.findAll(pageable);
     }
+
+    public Page<Post> searchPosts(
+            String keyword,
+            Pageable pageable){
+
+        return postRepository
+                .findByTitleContaining(
+                        keyword,
+                        keyword,
+                        pageable
+                );
+    }
+
+    // 検索関連
+//    public Page<Post> getPostList(String keyword, Pageable pageable){
+//        if(keyword != null && !keyword.strip().isEmpty() ){
+//            return postRepository.findByTitleContainingIgnoreCase(keyword, pageable);
+//        }
+//        return postRepository.findAll(pageable);
+//    }
+
+
 
     //　The start of 検索ロジック
 //    public Page<Post> searchPosts(String keyword, Pageable pageable){

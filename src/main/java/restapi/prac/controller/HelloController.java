@@ -17,16 +17,16 @@ public class HelloController {
 //        return "signup page!";
 //    }
 
-//    @GetMapping("/api/public/hello")
-//    public String publicHello()
-//    {
-//        return "Public Hello World";
-//    }
-//
-//    @GetMapping("/api/private/hello")
-//    public String privateHello(){
-//        return "Private Hello World";
-//    }
+    @GetMapping("/api/public/hello")
+    public String publicHello()
+    {
+        return "Public Hello World";
+    }
+
+    @GetMapping("/api/private/hello")
+    public String privateHello(){
+        return "Private Hello World";
+    }
     // privateで接近する場合、
     // application.propertiesに名前、パスワード保存
     //    spring.security.user.name=jjhgwx
