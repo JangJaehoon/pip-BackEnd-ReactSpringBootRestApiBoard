@@ -19,9 +19,7 @@ public interface PostRepository extends JpaRepository<Post,Long> {
             Pageable pageable
     );
 
-    // login ロジック
-    Optional<User> findByUsername(String username);
-    // login ロジック
+
 
     // The Start of 検索ロジック
 //    Page<Post> findByTitleContainingOrContentContaining(

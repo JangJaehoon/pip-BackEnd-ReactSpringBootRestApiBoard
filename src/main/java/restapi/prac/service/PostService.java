@@ -60,14 +60,14 @@ public class PostService {
     }
 
     // 新規会員加入
-    public Post signUp(Post post){
-
-        if(postRepository.findByUsername( post.getUsername() ).isPresent()) {
-            throw new RuntimeException("既に存在するユーザーです。");
-        }else{
-            return postRepository.save(post);
-        }
-    }
+//    public Post signUp(Post post){
+//
+//        if(postRepository.findByUsername( post.getUsername() ).isPresent()) {
+//            throw new RuntimeException("既に存在するユーザーです。");
+//        }else{
+//            return postRepository.save(post);
+//        }
+//    }
 
 
     // 新規登録

@@ -17,10 +17,10 @@ public class Post {
     private String content;
 
     // ログイン機能
-    @Column(nullable = true)
-    private String username;
-    @Column(nullable = true)
-    private String password;
+//    @Column(nullable = true)
+//    private String username;
+//    @Column(nullable = true)
+//    private String password;
     // ログイン機能
 
 //    @Column(nullable = false)
@@ -30,15 +30,13 @@ public class Post {
 //    private String info;
 
     public Post() {}
-    public Post(String title, String content, String username, String password) {
+    public Post(String title, String content) {
         this.title = title;
         this.content = content;
 
-        this.username = username;
-        this.password = password;
+//        this.username = username;
+//        this.password = password;
     }
-
-
 
 //    public Post(String title, String content, String empID, String info) {
 //        this.title = title;
