@@ -16,23 +16,23 @@
 //@Configuration
 //public class SecurityConfig {
 //
-////    @Bean
-////    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-////        http.csrf(AbstractHttpConfigurer::disable)
-////                .formLogin(AbstractHttpConfigurer::disable) // ログインページ非活性化
-////                .httpBasic(Customizer.withDefaults()) // /private パスで接近可能になる。
-////                .authorizeHttpRequests(auth->auth
-////                .requestMatchers("/api/public/**").permitAll() // このURLからの接近は許可する。
-////                .requestMatchers("/api/private/**").authenticated() // このURLからの接近は認証が必要
-////                .anyRequest().denyAll() // 他の全てのrequestは防ぐ。
-////                ); // The end of authorizeHttpRequests
-////        return http.build();
-////    }
-////
-////    @Bean
-////    public PasswordEncoder passwordEncoder() {
-////        return new BCryptPasswordEncoder();
-////    }
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf(AbstractHttpConfigurer::disable)
+//                .formLogin(AbstractHttpConfigurer::disable) // ログインページ非活性化
+//                .httpBasic(Customizer.withDefaults()) // /private パスで接近可能になる。
+//                .authorizeHttpRequests(auth->auth
+//                .requestMatchers("/api/public/**").permitAll() // このURLからの接近は許可する。
+//                .requestMatchers("/api/private/**").authenticated() // このURLからの接近は認証が必要
+//                .anyRequest().denyAll() // 他の全てのrequestは防ぐ。
+//                ); // The end of authorizeHttpRequests
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 //
 //    @Bean
 //    public CorsConfigurationSource corsConfigurationSource() {

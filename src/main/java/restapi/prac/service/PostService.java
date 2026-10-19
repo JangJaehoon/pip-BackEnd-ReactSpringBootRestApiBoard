@@ -27,7 +27,7 @@ public class PostService {
             Pageable pageable){
 
         return postRepository
-                .findByTitleContaining(
+                .findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(
                         keyword,
                         keyword,
                         pageable

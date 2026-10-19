@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends JpaRepository<Post,Long> {
 
-    Page<Post> findByTitleContaining(
+    Page<Post> findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(
             String title,
             String content,
             Pageable pageable
